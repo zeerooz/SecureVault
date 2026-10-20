@@ -4,11 +4,11 @@ namespace SecureVault.Api.Dtos;
 
 public record TwoFactorSetupResponse(string Secret, string OtpAuthUri);
 
-public record EnableTwoFactorRequest([property: Required, MinLength(6), MaxLength(10)] string Code);
+public record EnableTwoFactorRequest([Required, MinLength(6), MaxLength(10)] string Code);
 
 public record EnableTwoFactorResponse(IReadOnlyList<string> RecoveryCodes);
 
-public record DisableTwoFactorRequest([property: Required, MinLength(6), MaxLength(16)] string Code);
+public record DisableTwoFactorRequest([Required, MinLength(6), MaxLength(16)] string Code);
 
 /// <summary>
 /// Changing the master password re-wraps the vault key; it does not re-encrypt
@@ -27,9 +27,9 @@ public record SessionResponse(
     Guid Id,
     string? IpAddress,
     string? UserAgent,
-    DateTimeOffset CreatedAt,
-    DateTimeOffset LastSeenAt,
-    DateTimeOffset ExpiresAt,
+    DateTime CreatedAt,
+    DateTime LastSeenAt,
+    DateTime ExpiresAt,
     bool IsCurrent);
 
-public record AuditLogResponse(long Id, string Event, string? Detail, string? IpAddress, DateTimeOffset CreatedAt);
+public record AuditLogResponse(long Id, string Event, string? Detail, string? IpAddress, DateTime CreatedAt);

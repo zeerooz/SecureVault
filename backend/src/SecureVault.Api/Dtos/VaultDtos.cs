@@ -8,8 +8,8 @@ public record VaultItemResponse(
     VaultItemType Type,
     string EncryptedData,
     int Revision,
-    DateTimeOffset CreatedAt,
-    DateTimeOffset UpdatedAt);
+    DateTime CreatedAt,
+    DateTime UpdatedAt);
 
 public record CreateVaultItemRequest
 {

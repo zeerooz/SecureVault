@@ -9,7 +9,7 @@ namespace SecureVault.Api.Dtos;
 /// For unknown accounts it returns plausible deterministic parameters rather
 /// than a 404, to avoid turning it into an account-enumeration oracle.
 /// </summary>
-public record PreloginRequest([property: Required, EmailAddress, MaxLength(256)] string Email);
+public record PreloginRequest([Required, EmailAddress, MaxLength(256)] string Email);
 
 public record PreloginResponse(KdfType KdfType, int KdfIterations, string KdfSalt);
 
@@ -55,8 +55,8 @@ public record LoginResponse(
 
 public record TwoFactorRequiredResponse(bool RequiresTwoFactor = true);
 
-public record RefreshRequest([property: Required] string RefreshToken);
+public record RefreshRequest([Required] string RefreshToken);
 
 public record RefreshResponse(string AccessToken, string RefreshToken, int ExpiresInSeconds);
 
-public record UserSummary(Guid Id, string Email, bool TwoFactorEnabled, DateTimeOffset CreatedAt);
+public record UserSummary(Guid Id, string Email, bool TwoFactorEnabled, DateTime CreatedAt);

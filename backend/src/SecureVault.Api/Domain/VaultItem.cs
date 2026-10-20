@@ -25,8 +25,8 @@ public class VaultItem
     /// <summary>Optimistic-concurrency guard so two tabs cannot silently clobber each other.</summary>
     public int Revision { get; set; } = 1;
 
-    public DateTimeOffset CreatedAt { get; set; } = DateTimeOffset.UtcNow;
-    public DateTimeOffset UpdatedAt { get; set; } = DateTimeOffset.UtcNow;
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
 }
 
 public enum VaultItemType

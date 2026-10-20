@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "OsTSbKC8BRc=",
+  "dgSpecHash": "L4r4p5MRivY=",
   "success": true,
   "projectFilePath": "C:\\AhmedElkhawaga\\SecureVault\\backend\\tests\\SecureVault.Tests\\SecureVault.Tests.csproj",
   "expectedPackageFiles": [
@@ -35,6 +35,9 @@
     "C:\\Users\\PC\\.nuget\\packages\\microsoft.extensions.dependencymodel\\10.0.13\\microsoft.extensions.dependencymodel.10.0.13.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\microsoft.extensions.diagnostics\\10.0.13\\microsoft.extensions.diagnostics.10.0.13.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\microsoft.extensions.diagnostics.abstractions\\10.0.13\\microsoft.extensions.diagnostics.abstractions.10.0.13.nupkg.sha512",
+    "C:\\Users\\PC\\.nuget\\packages\\microsoft.extensions.diagnostics.healthchecks\\10.0.13\\microsoft.extensions.diagnostics.healthchecks.10.0.13.nupkg.sha512",
+    "C:\\Users\\PC\\.nuget\\packages\\microsoft.extensions.diagnostics.healthchecks.abstractions\\10.0.13\\microsoft.extensions.diagnostics.healthchecks.abstractions.10.0.13.nupkg.sha512",
+    "C:\\Users\\PC\\.nuget\\packages\\microsoft.extensions.diagnostics.healthchecks.entityframeworkcore\\10.0.13\\microsoft.extensions.diagnostics.healthchecks.entityframeworkcore.10.0.13.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\microsoft.extensions.fileproviders.abstractions\\10.0.13\\microsoft.extensions.fileproviders.abstractions.10.0.13.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\microsoft.extensions.fileproviders.physical\\10.0.13\\microsoft.extensions.fileproviders.physical.10.0.13.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\microsoft.extensions.filesystemglobbing\\10.0.13\\microsoft.extensions.filesystemglobbing.10.0.13.nupkg.sha512",

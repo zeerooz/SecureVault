@@ -50,15 +50,15 @@ public class User
     // --- Lockout ----------------------------------------------------------
 
     public int FailedLoginCount { get; set; }
-    public DateTimeOffset? LockoutEndsAt { get; set; }
+    public DateTime? LockoutEndsAt { get; set; }
 
-    public DateTimeOffset CreatedAt { get; set; } = DateTimeOffset.UtcNow;
-    public DateTimeOffset UpdatedAt { get; set; } = DateTimeOffset.UtcNow;
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
 
     public List<VaultItem> VaultItems { get; set; } = [];
     public List<Session> Sessions { get; set; } = [];
 
-    public bool IsLockedOut => LockoutEndsAt is not null && LockoutEndsAt > DateTimeOffset.UtcNow;
+    public bool IsLockedOut => LockoutEndsAt is not null && LockoutEndsAt > DateTime.UtcNow;
 }
 
 public enum KdfType

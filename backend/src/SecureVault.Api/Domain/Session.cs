@@ -17,14 +17,14 @@ public class Session
     /// <summary>Groups rotated tokens so reuse of an old one can revoke the whole chain.</summary>
     public Guid FamilyId { get; set; } = Guid.NewGuid();
 
-    public DateTimeOffset CreatedAt { get; set; } = DateTimeOffset.UtcNow;
-    public DateTimeOffset ExpiresAt { get; set; }
-    public DateTimeOffset LastSeenAt { get; set; } = DateTimeOffset.UtcNow;
-    public DateTimeOffset? RevokedAt { get; set; }
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    public DateTime ExpiresAt { get; set; }
+    public DateTime LastSeenAt { get; set; } = DateTime.UtcNow;
+    public DateTime? RevokedAt { get; set; }
     public string? RevokedReason { get; set; }
 
     public string? IpAddress { get; set; }
     public string? UserAgent { get; set; }
 
-    public bool IsActive => RevokedAt is null && ExpiresAt > DateTimeOffset.UtcNow;
+    public bool IsActive => RevokedAt is null && ExpiresAt > DateTime.UtcNow;
 }

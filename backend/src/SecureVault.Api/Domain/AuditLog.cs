@@ -18,7 +18,7 @@ public class AuditLog
     public string? IpAddress { get; set; }
     public string? UserAgent { get; set; }
 
-    public DateTimeOffset CreatedAt { get; set; } = DateTimeOffset.UtcNow;
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 }
 
 public enum AuditEvent
