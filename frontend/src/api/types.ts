@@ -82,11 +82,14 @@ export interface ProblemDetails {
 }
 
 export class ApiError extends Error {
-  constructor(
-    public readonly status: number,
-    message: string,
-  ) {
+  // Declared explicitly rather than as a constructor parameter property:
+  // the project builds with erasableSyntaxOnly, which rules out TypeScript
+  // syntax that has to emit runtime code.
+  readonly status: number;
+
+  constructor(status: number, message: string) {
     super(message);
     this.name = 'ApiError';
+    this.status = status;
   }
 }

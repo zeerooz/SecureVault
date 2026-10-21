@@ -1,0 +1,59 @@
+name: securevault
+
+services:
+  db:
+    image: postgres:18-alpine
+    environment:
+      POSTGRES_DB: securevault
+      POSTGRES_USER: securevault
+      # Local-only credential. Production supplies this from a secret store.
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-securevault}
+    volumes:
+      # Postgres 18 expects the mount one level up from the old data directory,
+      # so that a future pg_upgrade --link can work across major versions.
+      - db-data:/var/lib/postgresql
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U securevault -d securevault']
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    # Not published to the host: only the API needs to reach the database.
+    expose:
+      - '5432'
+
+  api:
+    build:
+      context: ./backend
+      dockerfile: src/SecureVault.Api/Dockerfile
+    environment:
+      ConnectionStrings__Postgres: Host=db;Port=5432;Database=securevault;Username=securevault;Password=${POSTGRES_PASSWORD:-securevault}
+      # Required. The app refuses to start if this is missing or under 32
+      # characters — see the README for generating one.
+      Jwt__SigningKey: ${JWT_SIGNING_KEY:?set JWT_SIGNING_KEY in .env}
+      Jwt__Issuer: securevault
+      Jwt__Audience: securevault-web
+      ASPNETCORE_ENVIRONMENT: Production
+      # No CORS entry on purpose: the browser only ever talks to nginx, which
+      # proxies /api, so every request is same-origin.
+    volumes:
+      - dp-keys:/var/securevault/keys
+    depends_on:
+      db:
+        condition: service_healthy
+    expose:
+      - '8080'
+    restart: unless-stopped
+
+  web:
+    build:
+      context: ./frontend
+    ports:
+      - '${WEB_PORT:-8080}:8080'
+    depends_on:
+      api:
+        condition: service_started
+    restart: unless-stopped
+
+volumes:
+  db-data:
+  dp-keys:
